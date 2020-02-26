@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liquid Distortion Effects | Demo 1 | Codrops</title>
+  <meta name="description"
+    content="Some liquid distortion effects applied to an image slideshow using canvas, PixiJS and Greensock" />
+  <meta name="keywords" content="web development, canvas, distortion, liquid, effect, slideshow, javascript" />
+  <meta name="author" content="Yannis Yannakopoulos for Codrops" />
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/demo.css" />
+  <link rel="stylesheet" type="text/css" href="css/component.css" />
+  <link rel="stylesheet" type="text/css" href="css/text.css" />
+  <script>document.documentElement.className = 'js';</script>
+</head>
+
+<body class="demo-1 loading">
+  <main class="site-wrapper">
+    <div class="text">
+      <p>From Data</p>
+      <p>
+        <strong>
+          <span>T</span><span>o</span>&nbsp;<span>D</span><span>i</span><span>s</span><span>c</span><span>o</span><span>v</span><span>e</span><span>r</span><span>y</span>
+        </strong>
+      </p>
+    </div>
+    <div class="content">
+      <div class="slide-wrapper">
+        <div class="slide-item">
+          <img src="img/background2.png" class="slide-item__image">
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/demo.js"></script>
+  <script src="js/pixi.min.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script>
+    var spriteImages = document.querySelectorAll('.slide-item__image');
+    var spriteImagesSrc = [];
+
+    for (var i = 0; i < spriteImages.length; i++) {
+      var img = spriteImages[i];
+      spriteImagesSrc.push(img.getAttribute('src'));
+    }
+
+    var initCanvasSlideshow = new CanvasSlideshow({
+      sprites: spriteImagesSrc,
+      centerSprites: true,
+      displacementImage: 'img/dmaps/2048x2048/clouds.jpg',
+      autoPlay: false,
+      autoPlaySpeed: [10, 3],
+      displaceScale: [200, 70]
+    });
+
+    imagesLoaded(document.body, () => {
+      document.body.classList.remove('loading');
+      initCanvasSlideshow.play();
+    });
+  </script>
+</body>
+
+</html>
