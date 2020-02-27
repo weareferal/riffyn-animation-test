@@ -237,7 +237,7 @@
           var startScaleY = 70;
           var endScaleY = 7;
 
-          var duration = 8000;
+          var duration = 3500;
 
           var start = null;
           var stop = false;

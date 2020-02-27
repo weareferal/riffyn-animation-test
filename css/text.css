@@ -17,7 +17,7 @@ canvas {
     easeInQuart()
     https://easings.net/#
   */
-  animation: 7s reveal cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
+  animation: 1.5s reveal cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
 }
 
 .text {
@@ -51,59 +51,59 @@ canvas {
 }
 
 .text p:first-child {
-  animation: 3s fade-in both;
+  animation: 1.5s fade-in both;
 }
 
 .text p:last-child {
-  animation: 4s fade-in 1s both;
+  animation: 1.5s fade-in .5s both;
 }
 
 .text span {
-  animation: blur-text 2s ease-out both;
+  animation: blur-text 1s ease-out both;
 }
 
 .text span:nth-child(1) {
-  animation-delay: 4000ms;
+  animation-delay: 1000ms;
 }
 
 .text span:nth-child(2) {
-  animation-delay: 4250ms;
+  animation-delay: 1100ms;
 }
 
 .text span:nth-child(3) {
-  animation-delay: 4500ms;
+  animation-delay: 1200ms;
 }
 
 .text span:nth-child(4) {
-  animation-delay: 4750ms;
+  animation-delay: 1300ms;
 }
 
 .text span:nth-child(5) {
-  animation-delay: 5000ms;
+  animation-delay: 1400ms;
 }
 
 .text span:nth-child(6) {
-  animation-delay: 5250ms;
+  animation-delay: 1500ms;
 }
 
 .text span:nth-child(7) {
-  animation-delay: 5500ms;
+  animation-delay: 1600ms;
 }
 
 .text span:nth-child(8) {
-  animation-delay: 5750ms;
+  animation-delay: 1700ms;
 }
 
 .text span:nth-child(9) {
-  animation-delay: 6000ms;
+  animation-delay: 1800ms;
 }
 
 .text span:nth-child(10) {
-  animation-delay: 6250ms;
+  animation-delay: 1900ms;
 }
 
 .text span:nth-child(11) {
-  animation-delay: 6500ms;
+  animation-delay: 2000ms;
 }
 
 @keyframes fade-in {
