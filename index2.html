@@ -5,19 +5,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Animation Test - Demo 2</title>
-  <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" type="text/css" href="css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="css/demo.css" />
   <link rel="stylesheet" type="text/css" href="css/component.css" />
   <link rel="stylesheet" type="text/css" href="css/text.css" />
+  <link rel="stylesheet" type="text/css" href="css/MyFontsWebfontsKit.css"/>
+  <style type="text/css">
+  .AbitareSans-0 { font-family: AbitareSans-0; }
+  .AbitareSans-700 { font-family: AbitareSans-700; }
+  </style>
   <script>document.documentElement.className = 'js';</script>
 </head>
 
 <body class="demo-1 loading">
   <main class="site-wrapper">
     <div class="text">
-      <p>From Data</p>
-      <p>
+      <p class="AbitareSans-0">From Data</p>
+      <p class="AbitareSans-700">
         <strong>
           <span>T</span><span>o</span>&nbsp;<span>D</span><span>i</span><span>s</span><span>c</span><span>o</span><span>v</span><span>e</span><span>r</span><span>y</span>
         </strong>
@@ -26,7 +30,7 @@
     <div class="content">
       <div class="slide-wrapper">
         <div class="slide-item">
-          <img src="https://res.cloudinary.com/djst7cf98/image/upload/v1582758124/background2.jpg" class="slide-item__image">
+          <img src="img/background2.png" class="slide-item__image">
         </div>
       </div>
     </div>
@@ -48,7 +52,7 @@
     var initCanvasSlideshow = new CanvasSlideshow({
       sprites: spriteImagesSrc,
       centerSprites: true,
-      displacementImage: 'https://res.cloudinary.com/djst7cf98/image/upload/v1582758132/clouds.jpg',
+      displacementImage: 'img/dmaps/2048x2048/clouds.jpg',
       autoPlay: false,
       autoPlaySpeed: [10, 3],
       displaceScale: [200, 70]
