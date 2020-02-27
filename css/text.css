@@ -55,7 +55,7 @@ canvas {
 }
 
 .text p:last-child {
-  animation: 1.5s fade-in .5s both;
+  animation: 1.5s fade-in 1s both;
 }
 
 .text span {
