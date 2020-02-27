@@ -38,8 +38,7 @@ canvas {
 }
 
 .text p:first-child {
-  transform: translate3d(0, 50%, 0);
-  animation: 3s fade-in-first, 1s slide-up-first 2s both;
+  animation: 3s simple-fade-in both;
 }
 
 .text span {
@@ -91,21 +90,12 @@ canvas {
   animation-delay: 4900ms;
 }
 
-@keyframes fade-in-first {
+@keyframes simple-fade-in {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes slide-up-first {
-  from {
-    transform: translate3d(0, 50%, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
   }
 }
 
