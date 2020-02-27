@@ -38,7 +38,6 @@ canvas {
 }
 
 .text p:first-child {
-  font-weight: lighter;
   transform: translate3d(0, 50%, 0);
   animation: 3s fade-in-first, 1s slide-up-first 2s both;
 }
