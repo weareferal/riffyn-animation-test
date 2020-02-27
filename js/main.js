@@ -196,62 +196,98 @@
 
           render.autoStart = true;
 
-          function easeOutCubic(t) {
-            return (--t)*t*t+1;
+          var EasingFunctions = {
+            // no easing, no acceleration
+            linear: function (t) { return t },
+            // accelerating from zero velocity
+            easeInQuad: function (t) { return t*t },
+            // decelerating to zero velocity
+            easeOutQuad: function (t) { return t*(2-t) },
+            // acceleration until halfway, then deceleration
+            easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
+            // accelerating from zero velocity 
+            easeInCubic: function (t) { return t*t*t },
+            // decelerating to zero velocity 
+            easeOutCubic: function (t) { return (--t)*t*t+1 },
+            // acceleration until halfway, then deceleration 
+            easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+            // accelerating from zero velocity 
+            easeInQuart: function (t) { return t*t*t*t },
+            // decelerating to zero velocity 
+            easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+            // acceleration until halfway, then deceleration
+            easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+            // accelerating from zero velocity
+            easeInQuint: function (t) { return t*t*t*t*t },
+            // decelerating to zero velocity
+            easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+            // acceleration until halfway, then deceleration 
+            easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
           }
 
           // Speed
           var startSpeedX = 20;
-          var endSpeedX = 0;
+          var endSpeedX = 4;
           var startSpeedY = 6;
-          var endSpeedY = 0;
+          var endSpeedY = 1.2;
 
           // Scale
-          var startScaleX = options.displaceScale[0];
-          var endScaleX = options.displaceScaleTo[0];
-          var startScaleY = options.displaceScale[1];
-          var endScaleY = options.displaceScaleTo[1];
+          var startScaleX = 200;
+          var endScaleX = 20;
+          var startScaleY = 70;
+          var endScaleY = 7;
 
-          var duration = 12000;
+          var duration = 8000;
 
           var start = null;
           var stop = false;
 
+          function update() {
+            var now = Date.now();
+
+            // Start animating
+            if (!start) {
+              console.log('Start animating.')
+              start = Date.now();
+              now = start;
+            }
+
+            // Stop animating
+            if (stop) return;
+
+            if (now - start >= duration) {
+              console.log('Stop animating.')
+              stop = true;
+            }
+
+            // Apply ease function
+            var progress = (now - start) / duration;
+            var val = EasingFunctions.easeInQuad(progress);
+
+            // Update speed
+            options.autoPlaySpeed[0] = startSpeedX + (endSpeedX - startSpeedX) * val;
+            options.autoPlaySpeed[1] = startSpeedY + (endSpeedY - startSpeedY) * val;
+
+            // Animate
+
+            var scaleX = startScaleX + (endScaleX - startScaleX) * val;
+            var scaleY = startScaleY + (endScaleY - startScaleY) * val;
+            TweenMax.set(displacementFilter.scale, { x: scaleX, y: scaleY });
+          }
+
           render.add(function( delta ) {
             if (shouldPlay) {
-              var now = Date.now();
-
-              // Start animating
-              if (!start) {
-                console.log('Start animating.')
-                start = Date.now();
-                now = start;
-              }
-
-              // Stop animating
-              if (stop) return;
-              if (now - start >= duration) {
-                console.log('Stop animating.')
-                stop = true;
-              }
-
-              // Apply ease function
-              var progress = (now - start) / duration;
-              var val = easeOutCubic(progress);
-
-              // Update speed
-              options.autoPlaySpeed[0] = startSpeedX + (endSpeedX - startSpeedX) * val;
-              options.autoPlaySpeed[1] = startSpeedY + (endSpeedY - startSpeedY) * val;
-
-              // Animate
-
-              var scaleX = startScaleX + (endScaleX - startScaleX) * val;
-              var scaleY = startScaleY + (endScaleY - startScaleY) * val;
-              TweenMax.set(displacementFilter.scale, { x: scaleX, y: scaleY });
-
-              displacementSprite.x += options.autoPlaySpeed[0] * delta;
-              displacementSprite.y += options.autoPlaySpeed[1];
+              update();
             }
+
+            displacementSprite.x += options.autoPlaySpeed[0] * delta;
+            displacementSprite.y += options.autoPlaySpeed[1];
+
+            // console.log('speed x', options.autoPlaySpeed[0]);
+            // console.log('speed y', options.autoPlaySpeed[1]);
+
+            // console.log('x', displacementSprite.x);
+            // console.log('y', displacementSprite.y);
 
             renderer.render( stage );
           });
