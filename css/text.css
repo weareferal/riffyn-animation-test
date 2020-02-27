@@ -43,16 +43,19 @@ canvas {
 }
 
 .text p:first-child {
-  animation: 3s simple-fade-in both;
+  animation: 3s fade-in both;
+}
+
+.text p:last-child {
+  animation: 4s fade-in 1s both;
 }
 
 .text span {
-  opacity: 0;
-  animation: fade-in 1900ms both;
+  animation: blur-text 2s ease-out both;
 }
 
 .text span:nth-child(1) {
-  animation-delay: 3200ms;
+  animation-delay: 4000ms;
 }
 
 .text span:nth-child(2) {
@@ -60,42 +63,42 @@ canvas {
 }
 
 .text span:nth-child(3) {
-  animation-delay: 5400ms;
+  animation-delay: 4500ms;
 }
 
 .text span:nth-child(4) {
-  animation-delay: 3400ms;
+  animation-delay: 4750ms;
 }
 
 .text span:nth-child(5) {
-  animation-delay: 3900ms;
+  animation-delay: 5000ms;
 }
 
 .text span:nth-child(6) {
-  animation-delay: 4200ms;
+  animation-delay: 5250ms;
 }
 
 .text span:nth-child(7) {
-  animation-delay: 5150ms;
+  animation-delay: 5500ms;
 }
 
 .text span:nth-child(8) {
-  animation-delay: 4000ms;
+  animation-delay: 5750ms;
 }
 
 .text span:nth-child(9) {
-  animation-delay: 3800ms;
+  animation-delay: 6000ms;
 }
 
 .text span:nth-child(10) {
-  animation-delay: 4100ms;
+  animation-delay: 6250ms;
 }
 
 .text span:nth-child(11) {
-  animation-delay: 4900ms;
+  animation-delay: 6500ms;
 }
 
-@keyframes simple-fade-in {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -104,12 +107,12 @@ canvas {
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+@keyframes blur-text {
+	0% {
+    opacity: 0.5;
     filter: blur(20px);
   }
-  to {
+	100% {
     opacity: 1;
     filter: blur(0px);
   }
